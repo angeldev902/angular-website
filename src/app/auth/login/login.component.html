@@ -1,0 +1,23 @@
+<div class="w-50 mx-auto pt-5">
+  <form [formGroup]="loginForm" (ngSubmit)="submit()">
+  
+      <div class="mb-3">
+        <label for="email" class="form-label">Email:</label>
+        <input type="email" class="form-control" id="email" formControlName="email" name="email" placeholder="name@example.com">
+        <div *ngIf="loginForm.controls['email'].invalid && loginForm.controls['email'].touched">
+          Email inválido.
+        </div>
+      </div>
+  
+      <div class="mb-3">
+        <label for="password" class="form-label">Password:</label>
+        <input type="password" class="form-control" id="password" name="password" formControlName="password">
+        <div *ngIf="loginForm.controls['password'].invalid && loginForm.controls['password'].touched">
+          La contraseña debe tener al menos 6 caracteres.
+        </div>
+      </div>
+    
+      <button class="btn btn-primary" type="submit" [disabled]="loginForm.invalid">Login</button>
+  </form>
+</div>
+  

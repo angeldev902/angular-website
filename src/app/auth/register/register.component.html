@@ -1,0 +1,53 @@
+<div class="w-50 mx-auto pt-5">
+    <form [formGroup]="registerForm" (ngSubmit)="submit()">
+    
+        <div class="mb-3">
+          <label for="firstName" class="form-label">First Name:</label>
+          <input type="text" class="form-control" id="firstName" formControlName="firstName" placeholder="Pedro">
+          <div *ngIf="registerForm.controls['firstName'].invalid && registerForm.controls['firstName'].touched">
+             Invalid first name.
+          </div>
+        </div>
+    
+        <div class="mb-3">
+            <label for="lastName" class="form-label">Last Name:</label>
+            <input type="text" class="form-control" id="lastName" formControlName="lastName" placeholder="Perez">
+            <div *ngIf="registerForm.controls['lastName'].invalid && registerForm.controls['lastName'].touched">
+               Invalid last name.
+            </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="email" class="form-label">Email:</label>
+          <input type="email" class="form-control" id="email" formControlName="email" placeholder="pedro@gmail.com">
+          <div *ngIf="registerForm.controls['email'].invalid && registerForm.controls['email'].touched">
+             Invalid email.
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="phone" class="form-label">Phone:</label>
+          <input type="text" class="form-control" id="phone" formControlName="phone" placeholder="5522292928">
+          <div *ngIf="registerForm.controls['phone'].invalid && registerForm.controls['phone'].touched">
+             Invalid phone.
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="password" class="form-label">Password:</label>
+          <input type="password" class="form-control" id="password" formControlName="password" placeholder="">
+          <div *ngIf="registerForm.controls['password'].invalid && registerForm.controls['password'].touched">
+             Invalid password.
+          </div>
+        </div>
+
+        <pre>{{ registerForm.status }}</pre>
+        <app-custom-button
+            className="btn btn-primary"
+            type="submit"
+            [disabled]="registerForm.invalid"
+            name="Register"
+        ></app-custom-button>
+        <!-- <button class="btn btn-primary" type="submit" [disabled]="registerForm.invalid">Register</button> -->
+    </form>
+  </div>
