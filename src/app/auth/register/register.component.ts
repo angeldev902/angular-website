@@ -1,17 +1,24 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { SHARED_IMPORTS } from '../../core/shared-imports';
 import { CustomButtonComponent } from '../../shared/custom-button/custom-button.component';
+import { CustomInputComponent } from '../../shared/custom-input/custom-input.component';
 
 @Component({
   selector: 'app-register',
-  imports: [CustomButtonComponent, ...SHARED_IMPORTS],
+  imports: [CustomButtonComponent, CustomInputComponent, ...SHARED_IMPORTS],
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss',
   standalone: true
 })
 export class RegisterComponent {
   registerForm: FormGroup;
+
+  firstNameControl:FormControl;
+  lastNameControl:FormControl;
+  emailControl:FormControl;
+  phoneControl:FormControl;
+  passwordControl:FormControl;
 
   constructor(private fb:FormBuilder){
     this.registerForm = this.fb.group({
@@ -22,13 +29,21 @@ export class RegisterComponent {
       password: ['', Validators.compose([
         Validators.required,
         Validators.pattern(
-          '^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[!@#$%^&*])[A-Za-z\\d!@#$%^&*]{8,}$'
+          '^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[!@#$%^&*])[A-Za-z\\d!@#$%^&*]{7,}$'
         ),
       ])]
     })
+
+    this.firstNameControl = this.registerForm.get('firstName') as FormControl;
+    this.lastNameControl = this.registerForm.get('lastName') as FormControl;
+    this.emailControl = this.registerForm.get('email') as FormControl;
+    this.phoneControl = this.registerForm.get('phone') as FormControl;
+    this.passwordControl = this.registerForm.get('password') as FormControl;
   }
 
   submit(){
+    if (this.registerForm.valid) {
     console.log('I will register new user', this.registerForm.value);
+    }
   }
 }
