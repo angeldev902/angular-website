@@ -1,0 +1,97 @@
+### CLI
+
+# Instalación
+
+--> ng new angular-website
+
+ng g m nombre-del-modulo --routing  # Módulo con rutas
+ng g s nombre-del-servicio     # Crear servicio
+ng g c nombre-del-componente   # Crear componente
+
+
+### Comandos actualizados
+
+ng generate module auth --route auth --module app.module
+
+ng generate component auth/login --module=auth
+
+###  --------------------------------------------- Pruebas unitarias 
+
+##  ¿Qué se prueba en Angular?
+
+# Componentes
+
+- Que se renderiza correctamente.
+- Que responde a eventos (click, input, etc.).
+- Que llama métodos como debe.
+- Que actualiza el DOM según el estado.
+
+# Services
+
+- Que realiza correctamente llamadas HTTP.
+- Que maneja errores como se espera.
+- Que retorna observables correctos.
+- Que ejecuta lógica interna bien.
+
+# Pipes, directivas, guards, etc.
+
+También se pueden testear individualmente.
+
+### Herramientas para hacer pruebas
+
+## Karma
+Ejecuta las pruebas en un navegador (Chrome, headless, etc.)
+
+## Jasmine
+Framework de pruebas: define los describe, it, expect, etc.
+
+# Estructura de prueba
+
+- beforeEach(...): Este bloque se ejecuta antes de cada prueba individual (it). Aquí se configura el entorno.
+    - TestBed es como un simulador de Angular que prepara los componentes para pruebas.
+    - fixture = TestBed.createComponent(...) crea una instancia del componente como si estuviera en la app real.
+    - fixture.detectChanges() renderiza el componente.
+- describe: Es una agrupación de pruebas. Puedes pensar que es como una carpeta que contiene varios it.  Significa: Voy a probar este componente.
+- it: Cada it representa una prueba individual
+- expect(...): Se usa para hacer afirmaciones o verificaciones.
+- spyOn(...): Sirve para espiar o interceptar un método y verificar si fue llamado:
+- By.css(...): Es parte de @angular/platform-browser. Permite buscar elementos en el DOM del componente:
+
+### Pruebas (Revisar el archivo de pruebas custom-button.component.spec.ts)
+
+- toBeTruthy()	El componente se creó correctamente
+- textContent	Se muestra el texto que pasas con @Input()
+- onClick.emit	El evento onClick se dispara al hacer clic
+- button.disabled	El botón se desactiva cuando disabled=true
+
+### Comando para correr pruebas
+
+--> ng test
+--> npm run test
+
+### WARNING
+
+El comando "npm run test" ejeuctara las pruebas de todos los arhivos TODOS, se recomienda no crear inmediatamente todos los archivos a la vez en su lugar se debe de hacer algunas de las siguientes opciones:
+
+- Ir creando los archivos cuando se vaya a hacer pruebas sobre el.
+- Renombrar los archivos con ".bak" al final para que no se ejecuten
+- Usar "fdescribe" o "fit" en lugar de "describe" 
+
+```typescript 
+// original
+describe('CustomButtonComponent', () => {
+
+})
+//Esto hará que solo ese bloque de pruebas se ejecute.
+fdescribe('CustomButtonComponent', () => {
+
+})
+
+fit('should create', () => {
+  // solo esta se ejecutará
+});
+
+```
+
+hixsa
+
