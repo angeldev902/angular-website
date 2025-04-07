@@ -8,6 +8,8 @@ ng g m nombre-del-modulo --routing  # Módulo con rutas
 ng g s nombre-del-servicio     # Crear servicio
 ng g c nombre-del-componente   # Crear componente
 
+ng generate component --skip-tests=true component-name
+
 
 ### Comandos actualizados
 
@@ -92,6 +94,27 @@ fit('should create', () => {
 });
 
 ```
+
+### -----------------------------Interceptor
+
+Un interceptor es una clase que implementa la interfaz HttpInterceptor y te permite interceptar todas las peticiones y respuestas HTTP de tu app.
+
+- Es como un filtro o middleware:
+
+- Puedes modificar la petición (agregar headers, tokens, etc.)
+
+- Puedes modificar o manejar la respuesta
+
+- Puedes capturar errores globales
+
+- Puedes hacer logs, mostrar loaders, y más.
+
+
+Para Angular 16+ (incluye Angular 19)
+
+Tu AuthInterceptor debe ser una función pura, no una clase inyectada. O, si usas clase, debes retornar una función en el withInterceptors.
+
+Tienes dos formas de solucionarlo:
 
 hixsa
 

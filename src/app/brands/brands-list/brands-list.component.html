@@ -1,0 +1,9 @@
+<div class="w-75 m-auto">
+    <h1>Brands</h1>
+    <app-custom-table
+        [columns]="columns"
+        [data]="brands"
+        [showPagination]="false"
+        (delete)="deleteBrand($event)"
+    ></app-custom-table>
+</div>

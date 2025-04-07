@@ -39,4 +39,18 @@ export class ApiService {
     ))
   };
 
+
+  requestGet(endpoint:string, params:any=null): Observable<any> {
+    const requestData = endpoints[`${endpoint}`];
+    return this.httpClient.get<any>(`${properties.api}${requestData.url(params)}`).pipe(tap(
+      (res: any) => {
+        if(res) {
+          //Se detendra el loader y se mostrara algun mensaje si es que se necesita
+        }
+      },(error: any) => {
+        console.log('Ocurrio un error', error);
+      }
+    ))
+  };
+
 }

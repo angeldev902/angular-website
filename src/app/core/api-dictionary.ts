@@ -11,5 +11,10 @@ export const endpoints: Record<string, EndpointCustom> = {
         url: () => {
             return `/auth/register`
         }
+    },
+    brandsList: {
+        url: (params:any) => {
+            return `/brands`
+        }
     }
 };
