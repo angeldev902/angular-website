@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
-import { ApiService } from '../../core/services/api.service';
-import { CustomTableComponent } from '../../shared/custom-table/custom-table.component';
+import { ApiService } from '../../../core/services/api.service';
+import { CustomTableComponent } from '../../../shared/custom-table/custom-table.component';
 
 @Component({
   selector: 'app-products-list',

@@ -1,10 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { SHARED_IMPORTS } from '../../core/shared-imports';
-import { CustomButtonComponent } from '../../shared/custom-button/custom-button.component';
-import { CustomInputComponent } from '../../shared/custom-input/custom-input.component';
-import { ApiService } from '../../core/services/api.service';
+import { SHARED_IMPORTS } from '../../../core/shared-imports';
+import { CustomButtonComponent } from '../../../shared/custom-button/custom-button.component';
+import { CustomInputComponent } from '../../../shared/custom-input/custom-input.component';
+import { ApiService } from '../../../core/services/api.service';
 @Component({
   selector: 'app-login',
   imports: [CustomInputComponent, CustomButtonComponent, ...SHARED_IMPORTS],

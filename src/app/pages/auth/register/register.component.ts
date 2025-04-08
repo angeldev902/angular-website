@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { SHARED_IMPORTS } from '../../core/shared-imports';
-import { CustomButtonComponent } from '../../shared/custom-button/custom-button.component';
-import { CustomInputComponent } from '../../shared/custom-input/custom-input.component';
+import { SHARED_IMPORTS } from '../../../core/shared-imports';
+import { CustomButtonComponent } from '../../../shared/custom-button/custom-button.component';
+import { CustomInputComponent } from '../../../shared/custom-input/custom-input.component';
 
 @Component({
   selector: 'app-register',
