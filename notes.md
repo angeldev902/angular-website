@@ -15,6 +15,8 @@ ng generate guard --skip-tests=true core/guards/auth
 
 ng generate service --skip-tests=true core/services/event-bus-service
 
+ng g interceptor --skip-tests=true core/interceptors/block-ui
+
 
 ### Comandos actualizados
 
