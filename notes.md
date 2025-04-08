@@ -11,6 +11,9 @@ ng g c nombre-del-componente   # Crear componente
 ng generate component --skip-tests=true component-name
 
 
+ng generate guard --skip-tests=true core/guards/auth
+
+
 ### Comandos actualizados
 
 ng generate module auth --route auth --module app.module

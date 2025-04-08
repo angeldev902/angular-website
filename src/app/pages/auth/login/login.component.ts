@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { SHARED_IMPORTS } from '../../../core/shared-imports';
 import { CustomButtonComponent } from '../../../shared/custom-button/custom-button.component';
 import { CustomInputComponent } from '../../../shared/custom-input/custom-input.component';
@@ -17,7 +18,11 @@ export class LoginComponent {
   emailControl:FormControl;
   passwordControl:FormControl;
 
-  constructor(private fb: FormBuilder, private apiService:ApiService) {
+  constructor(
+    private fb: FormBuilder, 
+    private apiService:ApiService,
+    private router:Router
+  ) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required ]],
@@ -31,7 +36,7 @@ export class LoginComponent {
     if (this.loginForm.valid) {
       console.log(this.loginForm.value);
       this.apiService.auth('login', this.loginForm.value).subscribe(res => {
-        console.log('Se inicio sesión', res);
+        this.router.navigate(['/products']);
       });
     }
   }
