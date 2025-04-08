@@ -6,6 +6,7 @@ import { SHARED_IMPORTS } from '../../../core/shared-imports';
 import { CustomButtonComponent } from '../../../shared/custom-button/custom-button.component';
 import { CustomInputComponent } from '../../../shared/custom-input/custom-input.component';
 import { ApiService } from '../../../core/services/api.service';
+import { EventBusServiceService } from '../../../core/services/event-bus-service.service';
 @Component({
   selector: 'app-login',
   imports: [CustomInputComponent, CustomButtonComponent, ...SHARED_IMPORTS],
@@ -21,7 +22,8 @@ export class LoginComponent {
   constructor(
     private fb: FormBuilder, 
     private apiService:ApiService,
-    private router:Router
+    private router:Router,
+    private eventBusServiceService: EventBusServiceService
   ) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
@@ -36,6 +38,7 @@ export class LoginComponent {
     if (this.loginForm.valid) {
       console.log(this.loginForm.value);
       this.apiService.auth('login', this.loginForm.value).subscribe(res => {
+        this.eventBusServiceService.setLoginState(true); // Update login status
         this.router.navigate(['/products']);
       });
     }

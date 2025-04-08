@@ -13,6 +13,8 @@ ng generate component --skip-tests=true component-name
 
 ng generate guard --skip-tests=true core/guards/auth
 
+ng generate service --skip-tests=true core/services/event-bus-service
+
 
 ### Comandos actualizados
 
@@ -121,3 +123,16 @@ Tienes dos formas de solucionarlo:
 
 hixsa
 
+### -----------------------------Comunicación entre componentes
+Para comunicar componentes que no son padre e hijo se debe de crear un servicio y hacer uso de la herramienta:
+
+BehaviorSubject 
+
+Antes se usaba: Subject
+
+# Diferencia entre Subject y BehaviorSubject
+Subject no guarda el último valor emitido.
+
+BehaviorSubject guarda el valor actual y se lo entrega a los nuevos subscriptores automáticamente.
+
+Por eso es ideal para estados como el login.
