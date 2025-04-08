@@ -1,0 +1,12 @@
+<div class="w-75 m-auto">
+    <h1>Products</h1>
+    <app-custom-table
+        [columns]="columns"
+        [data]="products"
+        [showPagination]="true"
+        [pageSize]="limit"
+        [totalItems]="totalProducts"
+        (delete)="deleteProduct($event)"
+        (pageChange)="fetchPage($event)"
+    ></app-custom-table>
+</div>
