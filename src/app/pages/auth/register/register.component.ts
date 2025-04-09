@@ -3,7 +3,7 @@ import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } 
 import { SHARED_IMPORTS } from '../../../core/shared-imports';
 import { CustomButtonComponent } from '../../../shared/custom-button/custom-button.component';
 import { CustomInputComponent } from '../../../shared/custom-input/custom-input.component';
-
+import { MessagesService } from '../../../core/services/messages.service';
 @Component({
   selector: 'app-register',
   imports: [CustomButtonComponent, CustomInputComponent, ...SHARED_IMPORTS],
@@ -20,7 +20,7 @@ export class RegisterComponent {
   phoneControl:FormControl;
   passwordControl:FormControl;
 
-  constructor(private fb:FormBuilder){
+  constructor(private fb:FormBuilder, private messagesService: MessagesService){
     this.registerForm = this.fb.group({
       firstName: ['', [Validators.required, Validators.pattern('^[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+$')]],
       lastName: ['', [Validators.required, Validators.pattern('^[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+$')]],
@@ -44,6 +44,7 @@ export class RegisterComponent {
   submit(){
     if (this.registerForm.valid) {
     console.log('I will register new user', this.registerForm.value);
+    this.messagesService.message('User registered');
     }
   }
 }

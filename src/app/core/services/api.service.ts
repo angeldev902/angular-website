@@ -4,13 +4,14 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, tap } from 'rxjs';
 import { saveToLocalStorage } from '../utils/localStoreHelper';
 import { endpoints } from '../api-dictionary';
+import { MessagesService } from './messages.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient, private messagesService: MessagesService) { }
 
   //Auth method
   auth(endpoint:string, body: any): Observable<any> {
@@ -22,6 +23,7 @@ export class ApiService {
         }
       },(error: any) => {
         console.log('Ocurrio un error', error);
+        this.messagesService.errorMessage(error);
       }
     ))
   };
@@ -49,6 +51,7 @@ export class ApiService {
         }
       },(error: any) => {
         console.log('Ocurrio un error', error);
+        this.messagesService.errorMessage(error);
       }
     ))
   };
