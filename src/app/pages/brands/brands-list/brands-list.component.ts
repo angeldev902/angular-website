@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
 import { ApiService } from '../../../core/services/api.service';
 import { CustomTableComponent } from '../../../shared/custom-table/custom-table.component';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { ConfirmDialogComponent } from '../../../shared/dialogs/confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'app-brands-list',
-  imports: [CustomTableComponent],
+  imports: [CustomTableComponent, MatDialogModule],
   templateUrl: './brands-list.component.html',
   styleUrl: './brands-list.component.scss'
 })
@@ -15,7 +17,7 @@ export class BrandsListComponent {
   ];
   public brands:any[] = [];
 
-  constructor(private apiService: ApiService){}
+  constructor(private apiService: ApiService, private matDialog: MatDialog){}
 
   ngOnInit(): void{
     this.getBrands();
@@ -27,7 +29,19 @@ export class BrandsListComponent {
     });
   }
 
-  deleteBrand(brand:any){
-    console.log('I will delete a brand', brand);
+  openDeleteDialog(brand:any) {
+    const dialogRef = this.matDialog.open(ConfirmDialogComponent, {
+      data: { title: 'Delete Brand', message: `Do you want delete ${brand.name}` },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        this.deleteBrand(brand.id);
+      }
+    });
+  }
+
+  deleteBrand(brandId:number){
+    console.log('I will delete a brand', brandId);
   }
 }

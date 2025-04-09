@@ -1,0 +1,39 @@
+.main {
+    width: 500px;
+    height: auto;
+    min-height: 150px;
+    overflow: scroll;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    flex-direction: column;
+    padding: 3rem;
+    .close {
+        position: absolute;
+        cursor: pointer;
+        top: 1rem;
+        right: 1rem;
+    }
+    h2 {
+        font-weight: 500;
+        font-size: 25px;
+        line-height: 25px;
+        color: rgba(66, 47, 138, 0.87);
+        font-family: "Poppins";
+    }
+    p {
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 16px;
+        color: #7b7878;
+        font-family: "Poppins";
+        margin-bottom: 0;
+    }
+    .btn-flex {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+}

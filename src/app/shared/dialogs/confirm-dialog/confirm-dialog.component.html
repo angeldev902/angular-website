@@ -1,0 +1,14 @@
+<div class="main">
+    <h2>{{ title }}</h2>
+    <p>{{ message }}</p>
+    <img class="close" src="assets/icons/closePurple.svg" alt="closeModal" (click)="close();" />
+    <div class="btn-flex">
+        <app-custom-button
+            className="btn btn-primary"
+            type="button"
+            [disabled]="false"
+            name="Aceptar"
+            (onClick)="confirm();"
+        ></app-custom-button>
+    </div>
+</div>

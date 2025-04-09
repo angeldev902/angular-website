@@ -138,3 +138,15 @@ Subject no guarda el último valor emitido.
 BehaviorSubject guarda el valor actual y se lo entrega a los nuevos subscriptores automáticamente.
 
 Por eso es ideal para estados como el login.
+
+
+### ---------------------------------Angular material 
+Se usa principalmente para hacer modales y tambien para mostrar mensajes pequeños
+
+# Instalación 
+
+--> ng add @angular/material
+
+- Recomentaciones
+1. Selecciona el tema azure blue
+2. Set up global Angular Material typography styles?  Es mejor darle que no ya que puede interferir con tipografias en el futuro
