@@ -8,7 +8,8 @@ import { ConfirmDialogComponent } from '../../../shared/dialogs/confirm-dialog/c
   selector: 'app-brands-list',
   imports: [CustomTableComponent, MatDialogModule],
   templateUrl: './brands-list.component.html',
-  styleUrl: './brands-list.component.scss'
+  styleUrl: './brands-list.component.scss',
+  standalone: true
 })
 export class BrandsListComponent {
   columns = [

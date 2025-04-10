@@ -150,3 +150,23 @@ Se usa principalmente para hacer modales y tambien para mostrar mensajes pequeñ
 - Recomentaciones
 1. Selecciona el tema azure blue
 2. Set up global Angular Material typography styles?  Es mejor darle que no ya que puede interferir con tipografias en el futuro
+
+
+### -----------------------------------lazy loading
+Comportamiento por defecto en Angular (sin lazy loading)
+Si no usas lazy loading de módulos o componentes, Angular hace esto al construir la app:
+
+- Carga todos los módulos y componentes declarados en el AppModule y sus módulos hijos.
+
+- Aunque no se rendericen todos los componentes en pantalla (como BrandsComponent si estás en /products), el código de esos componentes ya está incluido en el bundle inicial, o sea, ya está "cargado" en memoria.
+
+Esto significa que:
+
+- Angular solo muestra/renderiza los componentes de la ruta actual.
+
+- Pero sí ha cargado en memoria los componentes de otras rutas, lo que puede hacer que la app inicial tarde más en cargar si tu app crece.
+
+Para implementar lazy components se debe de hacer en el archivo donde se definen las rutas:
+
+loadComponent: () => import('../app/pages/auth/login/login.component').then(m => m.LoginComponent)
+
