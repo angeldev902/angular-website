@@ -38,6 +38,7 @@ export class LoginComponent {
     if (this.loginForm.valid) {
       console.log(this.loginForm.value);
       this.apiService.auth('login', this.loginForm.value).subscribe(res => {
+        console.log('Token', res);
         this.eventBusServiceService.setLoginState(true); // Update login status
         this.router.navigate(['/products']);
       });

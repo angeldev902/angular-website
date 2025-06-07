@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
-import { properties } from '../config/properties';
 import { HttpClient } from '@angular/common/http';
 import { Observable, tap } from 'rxjs';
 import { saveToLocalStorage } from '../utils/localStoreHelper';
-import { endpoints } from '../api-dictionary';
+import { endpoints } from '../config/endpoints-dictionary/dictionary';
 import { MessagesService } from './messages.service';
-
+import { environment } from '../../../environments/environment';
 @Injectable({
   providedIn: 'root'
 })
@@ -16,7 +15,7 @@ export class ApiService {
   //Auth method
   auth(endpoint:string, body: any): Observable<any> {
     const requestData = endpoints[`${endpoint}`];
-    return this.httpClient.post<any>(`${properties.api}${requestData.url()}`, body).pipe(tap(
+    return this.httpClient.post<any>(`${environment.apiBaseUrl}${requestData.url()}`, body).pipe(tap(
       (res: any) => {
         if(res) {
           saveToLocalStorage('userData', res);
@@ -30,7 +29,7 @@ export class ApiService {
 
   //Global methods
   requestPost(endpoint:string, body: any): Observable<any> {
-    return this.httpClient.post<any>(`${properties.api}${endpoint}`, body).pipe(tap(
+    return this.httpClient.post<any>(`${environment.apiBaseUrl}${endpoint}`, body).pipe(tap(
       (res: any) => {
         if(res) {
           //Se detendra el loader y se mostrara algun mensaje si es que se necesita
@@ -41,10 +40,9 @@ export class ApiService {
     ))
   };
 
-
   requestGet(endpoint:string, params:any=null): Observable<any> {
     const requestData = endpoints[`${endpoint}`];
-    return this.httpClient.get<any>(`${properties.api}${requestData.url(params)}`).pipe(tap(
+    return this.httpClient.get<any>(`${environment.apiBaseUrl}${requestData.url(params)}`).pipe(tap(
       (res: any) => {
         if(res) {
           //Se detendra el loader y se mostrara algun mensaje si es que se necesita

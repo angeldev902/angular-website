@@ -1,10 +1,9 @@
-import { properties } from "./config/properties";
-import { EndpointCustom } from "./models/customTypes";
+import { EndpointCustom } from "../../models/customTypes";
 
-export const endpoints: Record<string, EndpointCustom> = {
+export const dictionaryDjango: Record<string, EndpointCustom> = {
     login: {
         url: () => {
-            return `/auth/login`
+            return `/api/users/auth/login/`
         }
     },
     register: {
