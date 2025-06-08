@@ -54,4 +54,18 @@ export class ApiService {
     ))
   };
 
+  requestDelete(endpoint:string, params:any=null): Observable<any> {
+    const requestData = endpoints[`${endpoint}`];
+    return this.httpClient.delete<any>(`${environment.apiBaseUrl}${requestData.url(params)}`).pipe(tap(
+      (res: any) => {
+        if(res) {
+          this.messagesService.message(res.message);
+        }
+      },(error: any) => {
+        console.log('Ocurrio un error', error);
+        this.messagesService.errorMessage(error);
+      }
+    ))
+  };
+
 }

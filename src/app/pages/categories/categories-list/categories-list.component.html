@@ -1,0 +1,9 @@
+<div class="w-75 m-auto">
+    <h1>Categories</h1>
+    <app-custom-table
+        [columns]="columns"
+        [data]="categories"
+        [showPagination]="false"
+        (delete)="openDeleteDialog($event)"
+    ></app-custom-table>
+</div>

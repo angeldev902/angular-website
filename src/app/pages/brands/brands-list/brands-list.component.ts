@@ -3,6 +3,7 @@ import { ApiService } from '../../../core/services/api.service';
 import { CustomTableComponent } from '../../../shared/custom-table/custom-table.component';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from '../../../shared/dialogs/confirm-dialog/confirm-dialog.component';
+import { Brand } from '../../../core/models/brand.model';
 
 @Component({
   selector: 'app-brands-list',
@@ -16,7 +17,7 @@ export class BrandsListComponent {
     { key: 'id', label: 'ID' },
     { key: 'name', label: 'Name'  }
   ];
-  public brands:any[] = [];
+  public brands:Brand[] = [];
 
   constructor(private apiService: ApiService, private matDialog: MatDialog){}
 
@@ -32,7 +33,7 @@ export class BrandsListComponent {
 
   openDeleteDialog(brand:any) {
     const dialogRef = this.matDialog.open(ConfirmDialogComponent, {
-      data: { title: 'Delete Brand', message: `Do you want delete ${brand.name}` },
+      data: { title: 'Delete Brand', message: `Do you want delete ${brand.name} ?` },
     });
 
     dialogRef.afterClosed().subscribe((result) => {
@@ -43,6 +44,8 @@ export class BrandsListComponent {
   }
 
   deleteBrand(brandId:number){
-    console.log('I will delete a brand', brandId);
+    this.apiService.requestDelete('brandDelete', { brandId }).subscribe(res => {
+      this.getBrands();
+    })
   }
 }

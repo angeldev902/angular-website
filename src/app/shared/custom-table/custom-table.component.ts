@@ -9,7 +9,7 @@ import { SHARED_IMPORTS } from '../../core/shared-imports';
   standalone: true
 })
 export class CustomTableComponent {
-  @Input() columns: { key: string, label: string, type?: 'text' | 'currency' | 'date' }[] = [];
+  @Input() columns: { key: string, label: string, type?: 'text' | 'currency' | 'date' | 'object' }[] = [];
   @Input() data: any[] = [];
 
   @Input() showPagination = false;

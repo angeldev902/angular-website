@@ -16,9 +16,11 @@ export class NavbarComponent {
   constructor(private router: Router, private eventBusServiceService: EventBusServiceService) {} // Inyecta el servicio Router
 
   ngOnInit() {
+    console.log('User', this.user);
     this.eventBusServiceService.isLoggedIn$.subscribe(isLogged => {
       if (isLogged) {
         this.user = getFromLocalStorage('userData');
+        console.log('User', this.user);
       }
     });
   }

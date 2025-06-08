@@ -6,7 +6,7 @@
         [showPagination]="true"
         [pageSize]="limit"
         [totalItems]="totalProducts"
-        (delete)="deleteProduct($event)"
+        (delete)="openDeleteDialog($event)"
         (pageChange)="fetchPage($event)"
     ></app-custom-table>
 </div>

@@ -11,6 +11,7 @@
           <ng-container [ngSwitch]="col.type">
             <span *ngSwitchCase="'currency'">{{ row[col.key] | currency:'USD':'symbol':'1.2-2' }}</span>
             <span *ngSwitchCase="'date'">{{ row[col.key] | date:'shortDate' }}</span>
+            <span *ngSwitchCase="'object'">{{ row[col.key].name }}</span>
             <span *ngSwitchDefault>{{ row[col.key] }}</span>
           </ng-container>
         </td>
