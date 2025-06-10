@@ -21,13 +21,28 @@ export const routes: Routes = [
         canActivate: [authGuard] 
     },
     { 
+        path: 'brands/new', 
+        loadComponent: () => import('../app/pages/brands/brand-detail/brand-detail.component').then(m => m.BrandDetailComponent),
+        canActivate: [authGuard] 
+    },
+    { 
         path: 'categories', 
         loadComponent: () => import('../app/pages/categories/categories-list/categories-list.component').then(m => m.CategoriesListComponent),
+        canActivate: [authGuard] 
+    },
+    { 
+        path: 'categories/new', 
+        loadComponent: () => import('../app/pages/categories/category-detail/category-detail.component').then(m => m.CategoryDetailComponent),
         canActivate: [authGuard] 
     },
     { 
         path: 'products', 
         loadComponent: () => import('../app/pages/products/products-list/products-list.component').then(m => m.ProductsListComponent),
         canActivate: [authGuard] 
-    }
+    },
+    { 
+        path: 'products/new', 
+        loadComponent: () => import('../app/pages/products/product-detail/product-detail.component').then(m => m.ProductDetailComponent),
+        canActivate: [authGuard] 
+    },
 ];

@@ -4,10 +4,11 @@ import { CustomTableComponent } from '../../../shared/custom-table/custom-table.
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from '../../../shared/dialogs/confirm-dialog/confirm-dialog.component';
 import { Category } from '../../../core/models/category.model';
+import { CustomLinkButtonComponent } from '../../../shared/custom-link-button/custom-link-button.component';
 
 @Component({
   selector: 'app-categories-list',
-   imports: [CustomTableComponent, MatDialogModule],
+   imports: [CustomTableComponent, CustomLinkButtonComponent, MatDialogModule],
   templateUrl: './categories-list.component.html',
   styleUrl: './categories-list.component.scss',
   standalone: true

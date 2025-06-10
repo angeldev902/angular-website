@@ -1,5 +1,16 @@
 <div class="w-75 m-auto">
-    <h1>Products</h1>
+    <div class="row">
+        <div class="col">
+            <h1 class="col">Products</h1>
+        </div>
+        <div class="col d-flex justify-content-end">
+            <app-custom-link-button
+            className="btn btn-primary"
+            name="New Product"
+            routerLink="/products/new"
+            ></app-custom-link-button>
+        </div>
+    </div>
     <app-custom-table
         [columns]="columns"
         [data]="products"

@@ -4,10 +4,10 @@ import { CustomTableComponent } from '../../../shared/custom-table/custom-table.
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from '../../../shared/dialogs/confirm-dialog/confirm-dialog.component';
 import { Brand } from '../../../core/models/brand.model';
-
+import { CustomLinkButtonComponent } from '../../../shared/custom-link-button/custom-link-button.component';
 @Component({
   selector: 'app-brands-list',
-  imports: [CustomTableComponent, MatDialogModule],
+  imports: [CustomTableComponent, CustomLinkButtonComponent, MatDialogModule],
   templateUrl: './brands-list.component.html',
   styleUrl: './brands-list.component.scss',
   standalone: true
