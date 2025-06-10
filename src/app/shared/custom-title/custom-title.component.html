@@ -1,0 +1,12 @@
+<ng-container [ngSwitch]="level">
+  <h1 *ngSwitchCase="1" [ngClass]="['text-' + alignText, 'text-' + color]">{{ text }}</h1>
+  <h2 *ngSwitchCase="2" [ngClass]="['text-' + alignText, 'text-' + color]">{{ text }}</h2>
+  <h3 *ngSwitchCase="3" [ngClass]="['text-' + alignText, 'text-' + color]">{{ text }}</h3>
+  <h4 *ngSwitchCase="4" [ngClass]="['text-' + alignText, 'text-' + color]">{{ text }}</h4>
+  <h5 *ngSwitchCase="5" [ngClass]="['text-' + alignText, 'text-' + color]">{{ text }}</h5>
+  <h6 *ngSwitchCase="6" [ngClass]="['text-' + alignText, 'text-' + color]">{{ text }}</h6>
+</ng-container>
+
+<p *ngIf="subtitle" class="text-muted fst-italic small text-{{ alignText }}">
+  {{ subtitle }}
+</p>
